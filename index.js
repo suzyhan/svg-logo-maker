@@ -35,7 +35,7 @@ const questions = [
     // THEN I am can enter a color keyword (OR a hexadecimal number)
     {
         type: "input",
-        name: "shapeColor",
+        name: "color",
         message: "What color would you like the shape to be? Enter a color (OR a hexadecimal number)"
     },
 ];
@@ -56,7 +56,7 @@ function init() {
     .then(function (userInput) {
         console.log(userInput);
         var fileName = 'logo.svg';
-        writeToFile(fileName, data);
+        writeToFile(fileName, generateLogo.js(userInput));
     });
 };
 
