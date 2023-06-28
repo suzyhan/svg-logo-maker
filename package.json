@@ -1,0 +1,23 @@
+{
+  "name": "svg-logo-maker",
+  "version": "1.0.0",
+  "description": "Module 10 Challenge: SVG Logo Maker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suzyhan/svg-logo-maker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suzyhan/svg-logo-maker/issues"
+  },
+  "homepage": "https://github.com/suzyhan/svg-logo-maker#readme",
+  "dependencies": {
+    "inquirer": "^9.2.7"
+  }
+}
