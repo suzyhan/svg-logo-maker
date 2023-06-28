@@ -39,3 +39,26 @@ const questions = [
         message: "What color would you like the shape to be? Enter a color (OR a hexadecimal number)"
     },
 ];
+
+// Create a function to generate an SVG file named 'logo.svg' when user input for all prompts are entered
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("Generated logo.svg");
+    });
+};
+
+// Create a function to initialize app
+function init() {
+    inquirer.prompt(questions)
+    .then(function (userInput) {
+        console.log(userInput);
+        var fileName = 'logo.svg';
+        writeToFile(fileName, data);
+    });
+};
+
+// Function call to initialize app
+init();
