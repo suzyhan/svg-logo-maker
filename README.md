@@ -29,9 +29,11 @@ The following image is an example of the application use and appearance:
 ## Video
 The following walkthrough video demonstrates the functionality of the SVG Logo Maker and how a user would invoke the application from the command line:
 
+https://github.com/suzyhan/svg-logo-maker/assets/129558186/d443e5ee-63e2-4942-9a71-fcc3bcdbfda4
+
 <figure class="video_container">
   <video controls="true" allowfullscreen="true" poster="path/to/poster_image.png" muted="" loop="" autoplay="">
-    <source src="" type="video/mp4">
+    <source src="assets/SVG-Logo-Maker.mp4" type="video/mp4">
   </video>
 </figure>
 
