@@ -46,7 +46,6 @@ Please contact me to help contribute.
 ## Testing
 Each shape class (Triangle, Circle, Square) is tested for a `render()` method that returns a string for the corresponding SVG file with the given shape color. Open the terminal, use the command 'npm run test' to test for all shape classes.
 
-The following image shows the test suite:
 ![Screenshot of application testing](/assets/svg-test.png)
 
 ## Questions
