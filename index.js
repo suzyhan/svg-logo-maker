@@ -1,7 +1,9 @@
 // Import file system and inquirer
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateLogo = require('./utils/generateLogo');
+
+// Import classes from shapes library
+const { Triangle, Circle, Square } = require('./lib/shapes')
 
 // Create an array of questions for user input that specifies properties for generated svg logo
 const questions = [
@@ -40,12 +42,42 @@ const questions = [
     },
 ];
 
-// Create a function to generate an SVG file named 'logo.svg' when user input for all prompts are entered
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
+// Create a function to generate an SVG file named 'logo.svg' when user answers all prompts
+function writeToFile(fileName, answers) {
+    let svgString = "";
+    // Sets width and height of logo container
+    svgString = '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">';
+    // <g> tag wraps <text> tag so that user text input displays on shape
+    svgString += "<g>";
+    // Takes user input for shape choice and inserts it into SVG file
+    svgString += `${answers.shape}`;
+    
+    // Check user input from choices and adds properties to svg string
+    let userShape;
+    if (answers.shape === "Triangle") {
+        userShape = new Triangle();
+        svgString += `<polygon points="150, 18 244, 182 56, 182" fill="${answers.color}"/>`;
+    } else if (answers.shape === "Square") {
+        userShape = new Square();
+        svgString += `<rect x="73" y="40" width="160" height="160" fill="${answers.color}"/>`;
+    } else {
+        userShape = new Circle();
+        svgString += `<circle cx="150" cy="115" r="80" fill="${answers.color}"/>`;
+    }
+
+    // Takes in user input for text content and text color
+    svgString += `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.textColor}">${answers.text}</text>`;
+    // Closing </g> tag
+    svgString += "</g>";
+    // Closing </svg> tag
+    svgString += "</svg>";
+    
+     // Using file system to generate svg logo
+    fs.writeFile(fileName, svgString, (err) => {
         if (err) {
             return console.log(err);
         }
+        // Output text printed in the command line
         console.log("Generated logo.svg");
     });
 };
@@ -53,10 +85,9 @@ function writeToFile(fileName, data) {
 // Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-    .then(function (userInput) {
-        console.log(userInput);
+    .then((answers) => {
         var fileName = 'logo.svg';
-        writeToFile(fileName, generateLogo.js(userInput));
+        writeToFile(fileName, answers);
     });
 };
 
